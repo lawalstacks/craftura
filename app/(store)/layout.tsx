@@ -28,7 +28,13 @@ async function getNavSettings(): Promise<Record<string, boolean>> {
 }
 
 export default async function StoreLayout({ children }: { children: React.ReactNode }) {
-  const navSettings = await getNavSettings()
+  const navSettings = await getNavSettings() as Record<string, boolean> & {
+    nav_show_gallery: boolean;
+    nav_show_bulk_orders: boolean;
+    nav_show_blog: boolean;
+    nav_show_about: boolean;
+    nav_show_contact: boolean;
+  }
 
   return (
     <>
