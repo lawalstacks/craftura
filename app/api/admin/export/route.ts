@@ -98,7 +98,7 @@ export async function GET(req: NextRequest) {
 
     if (format === 'xlsx') {
       const xlsx = buildXlsx(rows, type)
-      return new NextResponse(xlsx, {
+      return new NextResponse(new Uint8Array(xlsx), {
         headers: {
           'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
           'Content-Disposition': `attachment; filename="${filename}.xlsx"`,
